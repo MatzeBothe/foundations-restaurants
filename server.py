@@ -18,11 +18,14 @@ class Restaurant:
     def getLocation(self):
         return self.location
 
-for restaurant in all_restaurants:
-    restaurant = Restaurant()
-
-    tm = Template("The name is {{ per.getName() }} and it is located in {{ per.getLocation() }}")
-    msg = tm.render(per=restaurant)
-    print(msg)
+def show_restaurants(all_restaurants):
+    for line in all_restaurants:
+        line = line[4:]
+        name = line.split(",")[0]
+        location = line.split(",")[1]
+        restaurant = Restaurant(name, location)
+        tm = Template("The name is {{ per.getName() }} and it is located in {{ per.getLocation() }}")
+        msg = tm.render(per=restaurant)
+        print(msg)
 
 data.close()
